@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#33691e">
+    <title>Coleta Seletiva Solidária UFSM</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="DataTables/datatables.css">
+    <link rel="stylesheet" type="text/css" href="styles/materialize.css">
+    <link rel="stylesheet" type="text/css" href="styles/search.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" charset="utf8" src="scripts/jquery-1.12.4.js"></script>
+    <script type="text/javascript" charset="utf8" src="DataTables/datatables.js"></script>
+    <script type="text/javascript" charset="utf8" src="scripts/materialize.js"></script>
+    <script type="text/javascript">
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+            .register('./sw.js')
+            .then(function() { console.log('Service Worker Registered'); });
+        }
+        var markers = [];
+        var searchTable;
+        var dataResiduos = {};
+        $(document).ready(function () {
+            $(".button-collapse").sideNav();
+            $('.collapsible').collapsible();
+            $('#results').hide();
+            $.ajax({
+                url: 'https://spreadsheets.google.com/feeds/list/1CNFUNPva91WPsoD2Yr0n3KQ4BjZcNkBRFhsYub1ClpA/od6/public/values?alt=json',
+                cache: true,
+                data: dataResiduos, 
+                dataType: 'json',
+                success: function(data) {
+                    searchTable = $('#table1').DataTable({
+                        "responsive": true,
+                        "dom": 'tp',
+                        "data": data.feed.entry,
+                        "columns": [
+                            {"data": "gsx$residuo.$t"},
+                            {"data": "gsx$tipo.$t"}
+                        ]
+                    });
+                }
+            });
+            /*searchTable = $('#table1').DataTable({
+                "responsive": true,
+                "dom": 'tp',
+                "bServerSide": false,
+                "bProcessing": true,
+                "sAjaxDataProp": "feed.entry",
+                "sAjaxSource": "https://spreadsheets.google.com/feeds/list/1CNFUNPva91WPsoD2Yr0n3KQ4BjZcNkBRFhsYub1ClpA/od6/public/values?alt=json",
+                "aoColumns": [
+                    { "mDataProp": "gsx$residuo.$t" },
+                    { "mDataProp": "gsx$tipo.$t" },
+                ]
+            });*/
+            $('#search').keyup(function () {
+                if ($('#search').val() == '') {
+                    $('#results').hide();
+                }
+                else {
+                    $('#results').show();
+                    searchTable.search($(this).val()).draw();                
+                }
+            });
+            filterMarkers = function(){
+                $.each(markers, function(index, item){
+                    console.log(item.segunda + ' check box ' + $('#segunda').is(':checked'));
+                    item.marker.setVisible(false);
+                    if((item.segunda && $('#segunda').is(':checked'))
+                    || (item.terca && $('#terca').is(':checked'))
+                    || (item.quarta && $('#quarta').is(':checked'))
+                    || (item.quinta && $('#quinta').is(':checked'))
+                    || (item.sexta && $('#sexta').is(':checked'))){
+                        console.log("Visible");
+                        item.marker.setVisible(true);
+                    }
+                });
+            }
+            $('#segunda').click(function(){
+                filterMarkers();
+            });
+            $('#terca').click(function(){
+                filterMarkers();
+            });
+            $('#quarta').click(function(){
+                filterMarkers();
+            });
+            $('#quinta').click(function(){
+                filterMarkers();
+            });
+            $('#sexta').click(function(){
+                filterMarkers();
+            });
+        });
+    </script>
+    <script>
+        function initMap(){
+            var center = {lat: -29.714315714425528, lng: -53.71471834680483};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: center
+            });
+            map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('formDias'));
+            var data = {};
+            $.ajax({
+                url: 'https://spreadsheets.google.com/feeds/list/1CNFUNPva91WPsoD2Yr0n3KQ4BjZcNkBRFhsYub1ClpA/2/public/values?alt=json',
+                cache: true,
+                data: data, 
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data.feed.entry, function(index, item) {
+                        var marker = new google.maps.Marker({
+                            position: {lat: parseFloat(item.gsx$latitude.$t), lng: parseFloat(item.gsx$longitude.$t)},
+                            map: map,
+                            title: item.gsx$nome.$t,
+                            icon: 'images/mapicon.png'
+                        });
+                        var local = {
+                            segunda: (item.gsx$segunda.$t == 's'),
+                            terca: (item.gsx$terça.$t == 's'),
+                            quarta: (item.gsx$quarta.$t == 's'),
+                            quinta: (item.gsx$quinta.$t == 's'),
+                            sexta: (item.gsx$sexta.$t == 's'),
+                            marker: marker
+                        };
+                        markers.push(local);
+                    });
+                }
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6QEqPesjp59dV_Iqa0T56y_NcnTMSbjw&callback=initMap"></script>
+    <link rel="manifest" href="/manifest.json">
+
+</head>
+
+<body>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper light-green darken-4">
+                <a href="#" class="brand-logo hide-on-med-and-down">Coleta Seletiva UFSM</a>
+                <a href="#" class="hide-on-large-only center-align" style="font-size:25px">Coleta Seletiva UFSM</a>
+                <!--a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#Localizacao">Localização dos containers</a></li>
+                    <li><a href="#QuemFaz">Quem faz a coleta?</a></li>
+                    <li><a href="link.html">Link 3</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a href="#Localizacao">Localização dos containers</a></li>
+                    <li><a href="#QuemFaz">Quem faz a coleta?</a></li>
+                    <li><a href="link.html">Link 3</a></li>
+                </ul-->
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="section">
+                    <h4>O que é a Coleta Seletiva Solidária UFSM</h4>
+                    <p>Consiste na coleta dos resíduos recicláveis gerados na UFSM por associações de selecionadores de resíduos
+                        habilitadas, de acordo com o Decreto 5940/2006.</p>
+                </div>
+                <div class="search-wrapper card">
+                    <input id="search" placeholder="Buscar resíduos"><i class="material-icons">search</i>
+                </div>
+                <div id="results">
+                    <table class="display" id="table1" style="width:90%">
+                        <thead>
+                            <tr>
+                                <th title="residuo">Resíduo</th>
+                                <th title="tipo">Tipo</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="section">
+                    <h4>Tipos de Resíduos</h4>
+                    <ul class="collapsible popout" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header"><img src="images/lixeiraverde.png" style="width:36px;height:36px;"></img>Resíduos Recicláveis</div>
+                            <div class="collapsible-body"><span>Os resíduos recicláveis (contêineres verdes) são papéis, metais, vidros e plásticos. Esses resíduos são recolhidos e destinados às Associações Habilitadas, os quais são triados e a classificados de acordo com a existência de mercado comprador. </span></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><img src="images/lixeiramarrom.png" style="width:36px;height:36px;"></img>Resíduos Orgânicos</div>
+                            <div class="collapsible-body"><span>Os resíduos orgânicos (contêineres marrons) são enviados à unidade de compostagem do Colégio Politécnico da UFSM.</span></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><img src="images/lixeiracinza.png" style="width:36px;height:36px;"></img>Rejeitos</div>
+                            <div class="collapsible-body"><span>Os rejeitos (contêineres pretos ou cinzas) são recolhidos pela Coleta Pública realizada pela Prefeitura Municipal e são destinados ao aterro da cidade. </span></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="divider"></div>
+                <div id="Localizacao" class="section">
+                    <h4>Localização dos containers</h4>
+                    <div id="map" style="width:100%; height:400px;"></div>
+                    <div id="formDias" class="z-depth-1" style="background:#fff; margin:10px;padding:10px;">
+                        <form action="#">
+                            <p>
+                                <input type="checkbox" id="segunda" checked="checked"/>
+                                <label for="segunda" class="black-text">Segunda</label>
+                            </p>
+                            <p>
+                                <input type="checkbox" id="terca" checked="checked"/>
+                                <label for="terca" class="black-text">Terça</label>
+                            </p>
+                            <p>
+                                <input type="checkbox" id="quarta" checked="checked"/>
+                                <label for="quarta" class="black-text">Quarta</label>
+                            </p>
+                            <p>
+                                <input type="checkbox" id="quinta" checked="checked"/>
+                                <label for="quinta" class="black-text">Quinta</label>
+                            </p>
+                            <p>
+                                <input type="checkbox" id="sexta" checked="checked"/>
+                                <label for="sexta" class="black-text">Sexta</label>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div id="QuemFaz" class="section">
+                    <h4>Quem faz a coleta?</h4>
+                    <p>A coleta é realizada semanalmente, por quatro associações da cidade, habilitadas em processo público aberto pela UFSM. São elas: Associação de Selecionadores de Materiais Recicláveis (ASMAR), Associação de Materiais Recicláveis Pôr do Sol (ARPS), Associação de Reciclagem de Seletivo Esperança (ARSELE) e Associação Noêmia Lazzarini.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+
+</html>
