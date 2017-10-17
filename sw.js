@@ -279,12 +279,24 @@ const fileManifest = [
     "revision": "c20cf01904a1172f5a8e0e1e3d7ea2b3"
   },
   {
-    "url": "images/mapicon.png",
+    "url": "images/mapicon_eletronico.png",
+    "revision": "161e8815d349bcc2e6868c8cd35bcf9c"
+  },
+  {
+    "url": "images/mapicon_reciclavel.png",
     "revision": "9cf58ce460f79c831729b156d0eac17f"
   },
   {
+    "url": "images/marca.png",
+    "revision": "1753ad873bbd17c8ccedd1d9629014d1"
+  },
+  {
+    "url": "images/tonelazul.png",
+    "revision": "8d3eafb21a4c5dbb8ea44fc44bc2105a"
+  },
+  {
     "url": "index.html",
-    "revision": "0e0b71d4e1370cbbad79ccb679141a28"
+    "revision": "72a09d790624c17d17c2703bd9f1d1f3"
   },
   {
     "url": "manifest.json",
