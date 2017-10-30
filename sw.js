@@ -255,24 +255,12 @@ const fileManifest = [
     "revision": "0f80ef631e87765193374177aab7f591"
   },
   {
-    "url": "images/icons/icon-128x128.png",
-    "revision": "706f9af68c9d8e91838fc0b32b84d218"
-  },
-  {
     "url": "images/icons/icon-144x144.png",
-    "revision": "7cbd1d970060e832b9c66276931d1d26"
-  },
-  {
-    "url": "images/icons/icon-152x152.png",
-    "revision": "4f2335bc19705fc305c564975e8e02ee"
+    "revision": "8c60df7664ed1c1e5300f6c9cbf1447a"
   },
   {
     "url": "images/icons/icon-192x192.png",
-    "revision": "ef27266d834a4bfd9bdc04d4ce7bcf86"
-  },
-  {
-    "url": "images/icons/icon-256x256.png",
-    "revision": "cb33a372107ba4d1a0c2ebe933d659b6"
+    "revision": "97f120e12f907466d19cec233eb44fca"
   },
   {
     "url": "images/lixeiracinza.png",
@@ -308,7 +296,7 @@ const fileManifest = [
   },
   {
     "url": "manifest.json",
-    "revision": "76b52bd4af74397102cd947504e50f14"
+    "revision": "f94d92c6bf3783c23e520f65f31ffabd"
   },
   {
     "url": "scripts/jquery-1.12.4.js",
