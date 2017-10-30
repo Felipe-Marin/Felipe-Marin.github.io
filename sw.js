@@ -19,10 +19,6 @@ importScripts('workbox-sw.prod.v2.1.0.js');
  */
 const fileManifest = [
   {
-    "url": "admin.html",
-    "revision": "507da91aa3d2102bfcb2ecb08f5bae28"
-  },
-  {
     "url": "DataTables/DataTables-1.10.15/css/dataTables.bootstrap.css",
     "revision": "46a18cea358250ebca28adcf454a791f"
   },
