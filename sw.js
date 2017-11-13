@@ -247,16 +247,28 @@ const fileManifest = [
     "revision": "1f35e6a11d27d2e10d28946d42332dc5"
   },
   {
-    "url": "images/especiais.png",
-    "revision": "0f80ef631e87765193374177aab7f591"
+    "url": "images/icons/icon-128x128.png",
+    "revision": "706f9af68c9d8e91838fc0b32b84d218"
   },
   {
     "url": "images/icons/icon-144x144.png",
     "revision": "8c60df7664ed1c1e5300f6c9cbf1447a"
   },
   {
+    "url": "images/icons/icon-152x152.png",
+    "revision": "4f2335bc19705fc305c564975e8e02ee"
+  },
+  {
     "url": "images/icons/icon-192x192.png",
     "revision": "97f120e12f907466d19cec233eb44fca"
+  },
+  {
+    "url": "images/icons/icon-256x256.png",
+    "revision": "cb33a372107ba4d1a0c2ebe933d659b6"
+  },
+  {
+    "url": "images/icons/icon-512x512.png",
+    "revision": "3a46dfd4af1e5cb909adf315c375ec70"
   },
   {
     "url": "images/lixeiracinza.png",
@@ -272,15 +284,19 @@ const fileManifest = [
   },
   {
     "url": "images/mapicon_eletronico.png",
-    "revision": "161e8815d349bcc2e6868c8cd35bcf9c"
+    "revision": "b98e5b3d6f6b04c567df97e4398a5b08"
   },
   {
     "url": "images/mapicon_reciclavel.png",
-    "revision": "9cf58ce460f79c831729b156d0eac17f"
+    "revision": "03a8e3e180715f4e50d2e1635ff7a0de"
   },
   {
     "url": "images/tonelazul.png",
-    "revision": "8d3eafb21a4c5dbb8ea44fc44bc2105a"
+    "revision": "402f274eafb5202c6aac09feb8fc8728"
+  },
+  {
+    "url": "images/tonelverde.png",
+    "revision": "8acbdc3647d7b7dc1b4aad74432ee649"
   },
   {
     "url": "images/uma.png",
@@ -288,11 +304,19 @@ const fileManifest = [
   },
   {
     "url": "index.html",
-    "revision": "01b1a15a1e32089d2d0616120195a3d7"
+    "revision": "92db15083ecbcf823058377a80504aee"
   },
   {
     "url": "manifest.json",
-    "revision": "f94d92c6bf3783c23e520f65f31ffabd"
+    "revision": "6b1f5c36f1ba36a760a9c42c4c0b5296"
+  },
+  {
+    "url": "scripts/admin.js",
+    "revision": "543bc6f4286cf169c8aedc6c5ec66fec"
+  },
+  {
+    "url": "scripts/initialize.js",
+    "revision": "dd804d856268b83c3a93d5abe2081e4b"
   },
   {
     "url": "scripts/jquery-1.12.4.js",
@@ -303,12 +327,20 @@ const fileManifest = [
     "revision": "114c26084cb472c6a5f8b58908472ad7"
   },
   {
+    "url": "scripts/map.js",
+    "revision": "48deb370741e1614a8795f106dc7cf30"
+  },
+  {
     "url": "scripts/materialize.js",
     "revision": "e97da5c8b60e6673b98b286c2acf437d"
   },
   {
     "url": "scripts/materialize.min.js",
     "revision": "72604b4dd26e411dd6d7290b9f6c1d9c"
+  },
+  {
+    "url": "scripts/search.js",
+    "revision": "7a5ba49450be8ccf808fe70386beefb4"
   },
   {
     "url": "styles/jquery.dataTables.min.css",
