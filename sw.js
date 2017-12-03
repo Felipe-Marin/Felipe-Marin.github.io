@@ -247,24 +247,12 @@ const fileManifest = [
     "revision": "1f35e6a11d27d2e10d28946d42332dc5"
   },
   {
-    "url": "images/icons/icon-128x128.png",
-    "revision": "706f9af68c9d8e91838fc0b32b84d218"
-  },
-  {
     "url": "images/icons/icon-144x144.png",
     "revision": "8c60df7664ed1c1e5300f6c9cbf1447a"
   },
   {
-    "url": "images/icons/icon-152x152.png",
-    "revision": "4f2335bc19705fc305c564975e8e02ee"
-  },
-  {
     "url": "images/icons/icon-192x192.png",
     "revision": "97f120e12f907466d19cec233eb44fca"
-  },
-  {
-    "url": "images/icons/icon-256x256.png",
-    "revision": "cb33a372107ba4d1a0c2ebe933d659b6"
   },
   {
     "url": "images/icons/icon-512x512.png",
