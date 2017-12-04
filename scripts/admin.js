@@ -149,7 +149,7 @@ function newMarker(map, lat, lng, title, tipo){
         $('#btnConfEdit').click(function(){
             console.log('Modificar: ' + marker.get('id'));
             $('#inputNome').prop('disabled', true);
-            $('#tipoRes').prop('disabled', true);
+            $('#tipoRes').prop('disabled', true).siblings().prop('disabled', true);;
             $('#btnModCont').show();
             $('#btnRemCont').show();
             $('#btnConfEdit').hide();
