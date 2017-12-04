@@ -1,4 +1,4 @@
-importScripts('workbox-sw.prod.v2.1.0.js');
+importScripts('workbox-sw.prod.v2.1.1.js');
 
 /**
  * DO NOT EDIT THE FILE MANIFEST ENTRY
@@ -247,6 +247,22 @@ const fileManifest = [
     "revision": "1f35e6a11d27d2e10d28946d42332dc5"
   },
   {
+    "url": "images/chrome1.png",
+    "revision": "f74abab4e22116ba54db980900e88126"
+  },
+  {
+    "url": "images/chrome2.png",
+    "revision": "9b47c5fbc2f85ebe0a78a3d0202db4bc"
+  },
+  {
+    "url": "images/firefox1.png",
+    "revision": "b5b1cb748b9537a62cf02e05f0fce383"
+  },
+  {
+    "url": "images/firefox2.png",
+    "revision": "0c45914097b6dbb7d10278154e14bf2c"
+  },
+  {
     "url": "images/icons/icon-144x144.png",
     "revision": "8c60df7664ed1c1e5300f6c9cbf1447a"
   },
@@ -299,10 +315,6 @@ const fileManifest = [
     "revision": "6b1f5c36f1ba36a760a9c42c4c0b5296"
   },
   {
-    "url": "scripts/admin.js",
-    "revision": "543bc6f4286cf169c8aedc6c5ec66fec"
-  },
-  {
     "url": "scripts/initialize.js",
     "revision": "dd804d856268b83c3a93d5abe2081e4b"
   },
@@ -345,9 +357,17 @@ const fileManifest = [
   {
     "url": "styles/search.css",
     "revision": "23c60b42e884171a01620798a04b2081"
+  },
+  {
+    "url": "teste.html",
+    "revision": "cf67c81a7b0f83015562a54dc45231cc"
+  },
+  {
+    "url": "workbox-sw.prod.v2.1.0.js",
+    "revision": "e5f207838d7fd9c81835d5705a73cfa2"
   }
 ];
 
 const workboxSW = new self.WorkboxSW();
 workboxSW.precache(fileManifest);
-workboxSW.router.registerRoute('https://spreadsheets.google.com/*', workboxSW.strategies.cacheFirst({}), 'GET');
+workboxSW.router.registerRoute('https://spreadsheets.google.com/*', workboxSW.strategies.networkFirst({}), 'GET');
