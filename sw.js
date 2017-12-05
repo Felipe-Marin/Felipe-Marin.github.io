@@ -1,4 +1,4 @@
-importScripts('workbox-sw.prod.v2.1.1.js');
+importScripts('workbox-sw.prod.v2.1.2.js');
 
 /**
  * DO NOT EDIT THE FILE MANIFEST ENTRY
@@ -361,10 +361,6 @@ const fileManifest = [
   {
     "url": "teste.html",
     "revision": "cf67c81a7b0f83015562a54dc45231cc"
-  },
-  {
-    "url": "workbox-sw.prod.v2.1.0.js",
-    "revision": "e5f207838d7fd9c81835d5705a73cfa2"
   }
 ];
 
